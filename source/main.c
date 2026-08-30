@@ -2,8 +2,21 @@
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "mandel.h"
 #include "implem.h"
+
+typedef struct { 
+    const char *rotulo;
+    double s;
+} Medida;
+
+double agora_segundos(void)
+{
+    struct timespec t;
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    return (double)t.tv_sec + (double)t.tv_nsec / 1e9;
+}
 
 int checa_converte(char argv[]){
     char *fim;
@@ -51,13 +64,19 @@ int main(int argc, char *argv[]) {
     int iteracoes = args[2];
     int n_threads = args[3];
 
+    Medida medidas[4];
+    int n_medidas = 0;
+
     unsigned char *pixels = mandel_aloca(largura, altura);
     if (pixels == NULL) {
         fprintf(stderr, "Erro: nao foi possivel alocar memoria para a imagem.\n");
         return 1;
     }
-    
+
+    double inicio = agora_segundos();
     mandel_serial(pixels, largura, altura, iteracoes, n_threads);
+    double tempo_serial = agora_segundos() - inicio;
+    medidas[n_medidas++] = (Medida){"Serial", tempo_serial};
 
     if (mandel_escreve("mandelbrot_jems2_serial.pgm", pixels, largura, altura) !=0){
         fprintf(stderr, "Erro: nao foi possivel escrever a imagem.\n");
@@ -66,5 +85,10 @@ int main(int argc, char *argv[]) {
     }
 
     free(pixels);
-    
+
+    FILE *f = fopen("times.txt", "w");
+    if (!f) { perror("times.txt"); return 1; }
+    for (int i = 0; i < n_medidas; i++)
+        fprintf(f, "%s: %.6fs\n", medidas[i].rotulo, medidas[i].s);
+    fclose(f);
 }
