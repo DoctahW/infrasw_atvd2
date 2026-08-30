@@ -1,0 +1,30 @@
+Script started on 2026-08-29 22:53:20-03:00 [COMMAND="bash --norc --noprofile -i" TERM="xterm" TTY="/dev/pts/1" COLUMNS="91" LINES="40"]
+[?2004hbash-5.3$ .mand[K[K[K[K[Kmake[K[K[K[Kgcc -[K
+evidencias.log  .gitignore      PLANO.md        source/         
+.git/           objects/        README.md       tests/          
+bash-5.3$ gcc sor[Kurce/main.c -o teste
+[?2004l[?2004hbash-5.3$ ./teste 1[K100 [K
+[?2004lUso: ./mandelbrot <largura> <altura> <iteracoes> <n_threads>
+[?2004hbash-5.3$ ./teste 4 4 50
+[?2004lErro: '4' não é um numero valido.
+Erro: '4' não é um numero valido.
+Erro: '50' não é um numero valido.
+Segmentation fault         (core dumped) ./teste 4 4 50
+[?2004hbash-5.3$ [?2004l
+exit
+
+Script done on 2026-08-29 22:55:26-03:00 [COMMAND_EXIT_CODE="139"]
+Script started on 2026-08-29 22:56:14-03:00 [COMMAND="bash --norc --noprofile -i" TERM="xterm" TTY="/dev/pts/1" COLUMNS="91" LINES="40"]
+[?2004hbash-5.3$ [H[2Jbash-5.3$ gcc ./teste 4 4 50[3P10[Cgcc source/main.c -o teste
+[?2004l[?2004hbash-5.3$ gcc source/main.c -o teste[C[C[C[C[C[C[C[C[C[C[12P./teste 4 4 50
+[?2004lSegmentation fault         (core dumped) ./teste 4 4 50
+[?2004hbash-5.3$ ./teste 4 4 50
+[?2004lSegmentation fault         (core dumped) ./teste 4 4 50
+[?2004hbash-5.3$ ./teste 4 4 50[C[C[C[C[C[C[C[C[C[Cgcc source/main.c -o teste
+[?2004l[?2004hbash-5.3$ gcc source/main.c -o teste[C[C[C[C[C[C[C[C[C[C[12P./teste 4 4 50
+[?2004lUso: ./mandelbrot <largura> <altura> <iteracoes> <n_threads>
+[?2004hbash-5.3$ ./teste 4 4 50 13
+[?2004l[?2004hbash-5.3$ [?2004l
+exit
+
+Script done on 2026-08-29 22:57:15-03:00 [COMMAND_EXIT_CODE="0"]
