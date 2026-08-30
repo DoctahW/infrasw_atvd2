@@ -2,3 +2,4 @@ objects/
 *.pgm
 times.txt
 mandelbrot
+compile_commands.json
