@@ -1,1 +1,4 @@
 objects/
+*.pgm
+times.txt
+mandelbrot
