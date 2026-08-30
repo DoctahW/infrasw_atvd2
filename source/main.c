@@ -2,6 +2,8 @@
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "mandel.h"
+#include "implem.h"
 
 int checa_converte(char argv[]){
     char *fim;
@@ -48,6 +50,21 @@ int main(int argc, char *argv[]) {
     int altura = args[1];
     int iteracoes = args[2];
     int n_threads = args[3];
+
+    unsigned char *pixels = mandel_aloca(largura, altura);
+    if (pixels == NULL) {
+        fprintf(stderr, "Erro: nao foi possivel alocar memoria para a imagem.\n");
+        return 1;
+    }
     
-     
+    mandel_serial(pixels, largura, altura, iteracoes, n_threads);
+
+    if (mandel_escreve("mandelbrot_jems2_serial.pgm", pixels, largura, altura) !=0){
+        fprintf(stderr, "Erro: nao foi possivel escrever a imagem.\n");
+        free(pixels);
+        return 1;
+    }
+
+    free(pixels);
+    
 }
