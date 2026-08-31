@@ -6,13 +6,20 @@
 #include "mandel.h"
 #include "implem.h"
 
+typedef void (*Mandel_F)(unsigned char *, int, int, int, int);
+
+typedef struct {
+    const char *rotulo;
+    const char *slug;
+    Mandel_F    funcao;
+} Implem;
+
 typedef struct { 
     const char *rotulo;
     double s;
 } Medida;
 
-double agora_segundos(void)
-{
+double agora_segundos(void) {
     struct timespec t;
     clock_gettime(CLOCK_MONOTONIC, &t);
     return (double)t.tv_sec + (double)t.tv_nsec / 1e9;
@@ -46,6 +53,30 @@ int checa_converte(char argv[]){
     return (int)valor;
 }
 
+Medida executa_mandelbrot(const Implem *impl, int largura, int altura, int iteracoes, int n_threads){
+    unsigned char *pixels = mandel_aloca(largura, altura);
+    if (pixels == NULL) {
+        fprintf(stderr, "Erro: nao foi possivel alocar memoria.\n");
+        return (Medida){impl->rotulo, -1};
+    }
+
+    double inicio = agora_segundos();
+    impl->funcao(pixels, largura, altura, iteracoes, n_threads);
+    double tempo = agora_segundos() - inicio;
+
+    char arquivo[64];
+    snprintf(arquivo, sizeof(arquivo), "mandelbrot_jems2_%s.pgm", impl->slug);
+
+    if (mandel_escreve(arquivo, pixels, largura, altura) != 0) {
+        fprintf(stderr, "Erro: nao foi possivel escrever '%s'.\n", arquivo);
+        free(pixels);
+        return (Medida){impl->rotulo, -1};
+    }
+
+    free(pixels);
+    return (Medida){impl->rotulo, tempo};
+}
+
 int main(int argc, char *argv[]) {
     if (argc != 5) {
         fprintf(stderr, "Uso: %s <largura> <altura> <iteracoes> <n_threads>\n", argv[0]);
@@ -64,31 +95,30 @@ int main(int argc, char *argv[]) {
     int iteracoes = args[2];
     int n_threads = args[3];
 
-    Medida medidas[4];
+    static const Implem implementacoes[] = {
+        { "Serial",  "serial",  mandel_serial  },
+        { "OpenMP",  "openmp",  mandel_openmp  },
+        // { "Pthread", "pthread", mandel_pthread },
+        // { "Pthread2", "pthread2", mandel_pthread2 },
+    };
+    enum { N_IMPLEMS = (int)(sizeof implementacoes / sizeof implementacoes[0]) };
+
+    Medida medidas[N_IMPLEMS];
     int n_medidas = 0;
 
-    unsigned char *pixels = mandel_aloca(largura, altura);
-    if (pixels == NULL) {
-        fprintf(stderr, "Erro: nao foi possivel alocar memoria para a imagem.\n");
-        return 1;
+    for (int i = 0; i < N_IMPLEMS; i++) {
+        Medida m = executa_mandelbrot(&implementacoes[i], largura, altura,
+            iteracoes, n_threads);
+
+        if (m.s < 0)
+            return 1;
+        medidas[n_medidas++] = m;
     }
-
-    double inicio = agora_segundos();
-    mandel_serial(pixels, largura, altura, iteracoes, n_threads);
-    double tempo_serial = agora_segundos() - inicio;
-    medidas[n_medidas++] = (Medida){"Serial", tempo_serial};
-
-    if (mandel_escreve("mandelbrot_jems2_serial.pgm", pixels, largura, altura) !=0){
-        fprintf(stderr, "Erro: nao foi possivel escrever a imagem.\n");
-        free(pixels);
-        return 1;
-    }
-
-    free(pixels);
 
     FILE *f = fopen("times.txt", "w");
     if (!f) { perror("times.txt"); return 1; }
     for (int i = 0; i < n_medidas; i++)
         fprintf(f, "%s: %.6fs\n", medidas[i].rotulo, medidas[i].s);
     fclose(f);
+    return 0;
 }
