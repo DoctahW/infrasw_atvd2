@@ -109,3 +109,118 @@ gcc -fopenmp -pthread -o mandelbrot objects/implem.o objects/main.o objects/mand
 exit
 
 Script done on 2026-08-30 19:36:51-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-30 19:49:22-03:00 [COMMAND="bash --norc --noprofile -i" TERM="xterm" TTY="/dev/pts/2" COLUMNS="91" LINES="40"]
+[?2004hbash-5.3$ [H[2Jbash-5.3$ cat times.txt[C[C[C[C[C[C[C[C[C[C./mandelbrot 4 4 50 1
+[?2004l[?2004hbash-5.3$ ./mandelbrot 4 4 50 1[C[C[C[C[C[C[C[C[C[C[8Pcat times.txt[C[C[C[C[C[C[C[C[C[C./mandelbrot 4 4 50 1[C[C[C[C[C[C[C[C[C[Cmake[K clean[K clean
+[?2004lrm -rf objects mandelbrot
+[?2004hbash-5.3$ make clean./mandelbrot 4 4 50 1[C[C[C[C[C[C[C[C[C[C[8Pcat times.txt[C[C[C[C[C[C[C[C[C[C./mandelbrot 4 4 50 1[C[C[C[C[C[C[C[C[C[Cmake[K
+[?2004lmkdir -p objects
+gcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/implem.c -o objects/implem.o
+gcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/main.c -o objects/main.o
+gcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/mandel.c -o objects/mandel.o
+gcc -fopenmp -pthread -o mandelbrot objects/implem.o objects/main.o objects/mandel.o -lm
+[?2004hbash-5.3$ make clean./mandelbrot 4 4 50 1[C[C[C[C[C[C[C[C[C[C[8Pcat times.txt[C[C[C[C[C[C[C[C[C[C./mandelbrot 4 4 50 1
+[?2004l[?2004hbash-5.3$ make
+[?2004lgcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/main.c -o objects/main.o
+gcc -fopenmp -pthread -o mandelbrot objects/implem.o objects/main.o objects/mandel.o -lm
+[?2004hbash-5.3$ make./mandelbrot 4 4 50 1
+[?2004l[?2004hbash-5.3$ fi[K[Kcat times.txt
+[?2004lSerial: 0.000007s
+OpenMP: 0.000039s
+[?2004hbash-5.3$ [?2004l
+exit
+
+Script done on 2026-08-30 19:53:49-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-30 20:24:38-03:00 [COMMAND="bash --norc --noprofile -i" TERM="xterm" TTY="/dev/pts/2" COLUMNS="91" LINES="40"]
+[?2004hbash-5.3$ make
+[?2004lgcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/main.c -o objects/main.o
+gcc -fopenmp -pthread -o mandelbrot objects/implem.o objects/main.o objects/mandel.o -lm
+[?2004hbash-5.3$ makecat times.txt[C[C[C[C[C[C[C[C[C[C./mandelbrot 4 4 50 17[K
+[?2004l[?2004hbash-5.3$ ./mandelbrot 4 4 50 1[C[C[C[C[C[C[C[C[C[Cmake[Kcat times.txt
+[?2004lSerial: 0.000009s
+OpenMP: 0.000042s
+[?2004hbash-5.3$ cat times.txt[C[C[C[C[C[C[C[C[C[C./mandelbrot 4 4 50 1
+[?2004l[?2004hbash-5.3$ ./mandelbrot 4 4 50 1[C[C[C[C[C[C[C[C[C[C[8Pcat times.txt
+[?2004lSerial: 0.000005s
+OpenMP: 0.000027s
+[?2004hbash-5.3$ cat times.txt[C[C[C[C[C[C[C[C[C[C./mandelbrot 4 4 50 1
+[?2004l[?2004hbash-5.3$ ./mandelbrot 4 4 50 1[C[C[C[C[C[C[C[C[C[C[8Pcat times.txt
+[?2004lSerial: 0.000005s
+OpenMP: 0.000032s
+[?2004hbash-5.3$ 
+Script done on 2026-08-30 20:25:03-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-30 20:29:25-03:00 [COMMAND="bash --norc --noprofile -i" TERM="xterm" TTY="/dev/pts/2" COLUMNS="91" LINES="40"]
+[?2004hbash-5.3$ [H[2Jbash-5.3$ c[Ka[Kl[Kp[Kcat times.txt[C[C[C[C[C[C[C[C[C[C./mandelbrot 4 4 50 1[C[C[C[C[C[C[C[C[C[Cmake[K
+[?2004lmake: Nothing to be done for 'all'.
+[?2004hbash-5.3$ [?2004l
+exit
+
+Script done on 2026-08-30 20:29:38-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-30 20:29:45-03:00 [COMMAND="bash --norc --noprofile -i" TERM="xterm" TTY="/dev/pts/2" COLUMNS="91" LINES="40"]
+[?2004hbash-5.3$ make
+[?2004lmake: Nothing to be done for 'all'.
+[?2004hbash-5.3$ make clean
+[?2004lrm -rf objects mandelbrot
+[?2004hbash-5.3$ make
+[?2004lmkdir -p objects
+gcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/implem.c -o objects/implem.o
+gcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/main.c -o objects/main.o
+gcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/mandel.c -o objects/mandel.o
+gcc -fopenmp -pthread -o mandelbrot objects/implem.o objects/main.o objects/mandel.o -lm
+[?2004hbash-5.3$ make clean[Kcat times.txt[C[C[C[C[C[C[C[C[C[C./mandelbrot 4 4 50 1
+[?2004l[?2004hbash-5.3$ ./mandelbrot 4 4 50 1[C[C[C[C[C[C[C[C[C[Cmake[K clean[Kcat times.txt[C[C[C[C[C[C[C[C[C[C./mandelbrot 4 4 50 1[C[C[C[C[C[C[C[C[C[C[8Pcat times.txt
+[?2004lSerial: 0.000008s
+OpenMP: 0.000034s
+[?2004hbash-5.3$ cat times.txt[C[C[C[C[C[C[C[C[C[C[Kls
+[?2004levidencias.log	mandelbrot  PLANO.md   source  times.txt
+Makefile	objects     README.md  tests
+[?2004hbash-5.3$ make
+[?2004lgcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/main.c -o objects/main.o
+gcc -fopenmp -pthread -o mandelbrot objects/implem.o objects/main.o objects/mandel.o -lm
+[?2004hbash-5.3$ make[2Plscat times.txt[C[C[C[C[C[C[C[C[C[C./mandelbrot 4 4 50 1[C[C[C[C[C[C[C[C[C[C[8Pcat times.txt[C[C[C[C[C[C[C[C[C[Cls[K
+[?2004levidencias.log	mandelbrot  PLANO.md   source  times.txt
+Makefile	objects     README.md  tests
+[?2004hbash-5.3$ lsmake[2Plscat times.txt
+[?2004lSerial: 0.000008s
+OpenMP: 0.000034s
+[?2004hbash-5.3$ make cla[Kean
+[?2004lrm -rf objects mandelbrot
+[?2004hbash-5.3$ make
+[?2004lmkdir -p objects
+gcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/implem.c -o objects/implem.o
+gcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/main.c -o objects/main.o
+gcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/mandel.c -o objects/mandel.o
+gcc -fopenmp -pthread -o mandelbrot objects/implem.o objects/main.o objects/mandel.o -lm
+[?2004hbash-5.3$ make cleancat times.txt[C[C[C[C[C[C[C[C[C[Cls[Kmake[2Plscat times.txt[C[C[C[C[C[C[C[C[C[C./mandelbrot 4 4 50 1
+[?2004l[?2004hbash-5.3$ ls
+[?2004levidencias.log	mandelbrot_jems2_openmp.pgm  PLANO.md	tests
+Makefile	mandelbrot_jems2_serial.pgm  README.md	times.txt
+mandelbrot	objects			     source
+[?2004hbash-5.3$ cat times [K.txt
+[?2004lSerial: 0.000005s
+OpenMP: 0.000032s
+[?2004hbash-5.3$ [?2004l
+exit
+
+Script done on 2026-08-30 20:37:01-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-08-30 21:06:06-03:00 [COMMAND="bash --norc --noprofile -i" TERM="xterm" TTY="/dev/pts/2" COLUMNS="91" LINES="40"]
+[?2004hbash-5.3$ make clean
+[?2004lrm -rf objects mandelbrot
+[?2004hbash-5.3$ make
+[?2004lmkdir -p objects
+gcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/implem.c -o objects/implem.o
+gcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/main.c -o objects/main.o
+gcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/mandel.c -o objects/mandel.o
+gcc -fopenmp -pthread -o mandelbrot objects/implem.o objects/main.o objects/mandel.o -lm
+[?2004hbash-5.3$ ./mandelbrot 6 6 30 3
+[?2004l[?2004hbash-5.3$ cat times.txt 
+[?2004lSerial: 0.000008s
+OpenMP: 0.000356s
+[?2004hbash-5.3$ ls
+[?2004levidencias.log	mandelbrot_jems2_openmp.pgm  PLANO.md	tests
+Makefile	mandelbrot_jems2_serial.pgm  README.md	times.txt
+mandelbrot	objects			     source
+[?2004hbash-5.3$ [?2004l
+exit
+
+Script done on 2026-08-30 21:06:54-03:00 [COMMAND_EXIT_CODE="0"]
