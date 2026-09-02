@@ -2,11 +2,14 @@
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 #include "mandel.h"
 #include "implem.h"
 
 typedef int (*Mandel_F)(unsigned char *, int, int, int, int);
+
+#define PIXEL_NAO_ESCRITO 0xAA
 
 typedef struct {
     const char *rotulo;
@@ -59,6 +62,8 @@ Medida executa_mandelbrot(const Implem *impl, int largura, int altura, int itera
         fprintf(stderr, "Erro: nao foi possivel alocar memoria.\n");
         return (Medida){impl->rotulo, -1};
     }
+
+    memset(pixels, PIXEL_NAO_ESCRITO, (size_t)largura * (size_t)altura);
 
     double inicio = agora_segundos();
     if (impl->funcao(pixels, largura, altura, iteracoes, n_threads) != 0) {
