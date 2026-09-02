@@ -19,7 +19,7 @@ static void *construct_structs_pth1(void *arg) {
     return NULL;
 }
 
-void mandel_serial(unsigned char *pixels, int largura, int altura, 
+int mandel_serial(unsigned char *pixels, int largura, int altura,
     int max_iteracoes, int n_threads) {
     (void)n_threads;
     for (int y = 0; y < altura; y++) {
@@ -27,9 +27,10 @@ void mandel_serial(unsigned char *pixels, int largura, int altura,
             mandel_pixel(pixels, x, y, largura, altura, max_iteracoes);
         }
     }
+    return 0;
 }
 
-void mandel_openmp(unsigned char *pixels, int largura, int altura, 
+int mandel_openmp(unsigned char *pixels, int largura, int altura,
     int max_iteracoes, int n_threads) {
     #pragma omp parallel for num_threads(n_threads) schedule(static)
     for (int y = 0; y < altura; y++) {
@@ -37,25 +38,30 @@ void mandel_openmp(unsigned char *pixels, int largura, int altura,
             mandel_pixel(pixels, x, y, largura, altura, max_iteracoes);
         }
     }
+    return 0;
 }
 
-void mandel_pthreads1(unsigned char *pixels, int largura, int altura, 
+int mandel_pthreads1(unsigned char *pixels, int largura, int altura,
     int max_iteracoes, int n_threads) {
     if (n_threads > altura)
         n_threads = altura;
 
     pthread_t *tid = malloc((size_t)n_threads * sizeof *tid);
     ThreadData *faixa = malloc((size_t)n_threads * sizeof *faixa);
-    int *criada = malloc((size_t)n_threads * sizeof *criada);
+    int *criada = calloc((size_t)n_threads, sizeof *criada);
     if (tid == NULL || faixa == NULL || criada == NULL) {
         fprintf(stderr, "Falha ao alocar memória para threads.\n");
-        exit(EXIT_FAILURE);
+        free(tid);
+        free(faixa);
+        free(criada);
+        return -1;
     }
 
     int base = altura / n_threads;
     int resto = altura % n_threads;
 
     int y = 0;
+    int erro = 0;
     for (int i = 0; i < n_threads; i++) {
         int linhas = base + (i < resto ? 1 : 0);
         faixa[i] = (ThreadData){pixels, largura, altura, max_iteracoes, y, y + linhas};
@@ -64,7 +70,8 @@ void mandel_pthreads1(unsigned char *pixels, int largura, int altura,
         criada[i] = (pthread_create(&tid[i], NULL, construct_structs_pth1, &faixa[i]) == 0);
         if (!criada[i]) {
             fprintf(stderr, "Falha ao criar thread %d.\n", i);
-            exit(EXIT_FAILURE);
+            erro = 1;
+            break;
         }
     }
 
@@ -76,4 +83,5 @@ void mandel_pthreads1(unsigned char *pixels, int largura, int altura,
     free(tid);
     free(faixa);
     free(criada);
+    return erro ? -1 : 0;
 }

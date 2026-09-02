@@ -6,7 +6,7 @@
 #include "mandel.h"
 #include "implem.h"
 
-typedef void (*Mandel_F)(unsigned char *, int, int, int, int);
+typedef int (*Mandel_F)(unsigned char *, int, int, int, int);
 
 typedef struct {
     const char *rotulo;
@@ -61,7 +61,11 @@ Medida executa_mandelbrot(const Implem *impl, int largura, int altura, int itera
     }
 
     double inicio = agora_segundos();
-    impl->funcao(pixels, largura, altura, iteracoes, n_threads);
+    if (impl->funcao(pixels, largura, altura, iteracoes, n_threads) != 0) {
+        fprintf(stderr, "Erro: %s falhou na execucao.\n", impl->rotulo);
+        free(pixels);
+        return (Medida){impl->rotulo, -1};
+    }
     double tempo = agora_segundos() - inicio;
 
     char arquivo[64];
