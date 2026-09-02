@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
     static const Implem implementacoes[] = {
         { "Serial",  "serial",  mandel_serial  },
         { "OpenMP",  "openmp",  mandel_openmp  },
-        // { "Pthread", "pthread", mandel_pthread },
+        { "Pthreads1", "pthreads1", mandel_pthreads1 },
         // { "Pthread2", "pthread2", mandel_pthread2 },
     };
     enum { N_IMPLEMS = (int)(sizeof implementacoes / sizeof implementacoes[0]) };
