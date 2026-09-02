@@ -224,3 +224,161 @@ mandelbrot	objects			     source
 exit
 
 Script done on 2026-08-30 21:06:54-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-09-01 21:01:42-03:00 [COMMAND="bash --norc --noprofile -i" TERM="xterm" TTY="/dev/pts/4" COLUMNS="91" LINES="40"]
+[?2004hbash-5.3$ make
+[?2004lgcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/implem.c -o objects/implem.o
+[01m[Ksource/implem.c:[m[K In function ‘[01m[Kmandel_pthreads1[m[K’:
+[01m[Ksource/implem.c:45:22:[m[K [01;31m[Kerror: [m[Kimplicit declaration of function ‘[01m[Kmalloc[m[K’ [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-16.2.0/gcc/Warning-Options.html#index-Wimplicit-function-declaration-Wimplicit-function-declaration]8;;[m[K]
+   45 |     pthread_t *tid = [01;31m[Kmalloc[m[K((size_t)n_threads * sizeof *tid);
+      |                      [01;31m[K^~~~~~[m[K
+[01m[Ksource/implem.c:5:1:[m[K [01;36m[Knote: [m[Kinclude ‘[01m[K<stdlib.h>[m[K’ or provide a declaration of ‘[01m[Kmalloc[m[K’
+    4 | #include <stdio.h>
+  +++ |+[32m[K#include <stdlib.h>[m[K
+    5 | 
+[01m[Ksource/implem.c:45:22:[m[K [01;35m[Kwarning: [m[Kincompatible implicit declaration of built-in function ‘[01m[Kmalloc[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-16.2.0/gcc/Warning-Options.html#index-Wbuiltin-declaration-mismatch-Wbuiltin-declaration-mismatch]8;;[m[K]
+   45 |     pthread_t *tid = [01;35m[Kmalloc[m[K((size_t)n_threads * sizeof *tid);
+      |                      [01;35m[K^~~~~~[m[K
+[01m[Ksource/implem.c:45:22:[m[K [01;36m[Knote: [m[Kinclude ‘[01m[K<stdlib.h>[m[K’ or provide a declaration of ‘[01m[Kmalloc[m[K’
+[01m[Ksource/implem.c:50:9:[m[K [01;31m[Kerror: [m[Kimplicit declaration of function ‘[01m[Kexit[m[K’ [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-16.2.0/gcc/Warning-Options.html#index-Wimplicit-function-declaration-Wimplicit-function-declaration]8;;[m[K]
+   50 |         [01;31m[Kexit[m[K(EXIT_FAILURE);
+      |         [01;31m[K^~~~[m[K
+[01m[Ksource/implem.c:50:9:[m[K [01;36m[Knote: [m[Kinclude ‘[01m[K<stdlib.h>[m[K’ or provide a declaration of ‘[01m[Kexit[m[K’
+[01m[Ksource/implem.c:50:9:[m[K [01;35m[Kwarning: [m[Kincompatible implicit declaration of built-in function ‘[01m[Kexit[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-16.2.0/gcc/Warning-Options.html#index-Wbuiltin-declaration-mismatch-Wbuiltin-declaration-mismatch]8;;[m[K]
+[01m[Ksource/implem.c:50:9:[m[K [01;36m[Knote: [m[Kinclude ‘[01m[K<stdlib.h>[m[K’ or provide a declaration of ‘[01m[Kexit[m[K’
+[01m[Ksource/implem.c:50:14:[m[K [01;31m[Kerror: [m[K‘[01m[KEXIT_FAILURE[m[K’ undeclared (first use in this function)
+   50 |         exit([01;31m[KEXIT_FAILURE[m[K);
+      |              [01;31m[K^~~~~~~~~~~~[m[K
+[01m[Ksource/implem.c:50:14:[m[K [01;36m[Knote: [m[K‘[01m[KEXIT_FAILURE[m[K’ is defined in header ‘[01m[K<stdlib.h>[m[K’; this is probably fixable by adding ‘[01m[K#include <stdlib.h>[m[K’
+[01m[Ksource/implem.c:50:14:[m[K [01;36m[Knote: [m[Keach undeclared identifier is reported only once for each function it appears in
+[01m[Ksource/implem.c:70:5:[m[K [01;31m[Kerror: [m[Kimplicit declaration of function ‘[01m[Kfree[m[K’ [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-16.2.0/gcc/Warning-Options.html#index-Wimplicit-function-declaration-Wimplicit-function-declaration]8;;[m[K]
+   70 |     [01;31m[Kfree[m[K(tid);
+      |     [01;31m[K^~~~[m[K
+[01m[Ksource/implem.c:70:5:[m[K [01;36m[Knote: [m[Kinclude ‘[01m[K<stdlib.h>[m[K’ or provide a declaration of ‘[01m[Kfree[m[K’
+[01m[Ksource/implem.c:70:5:[m[K [01;35m[Kwarning: [m[Kincompatible implicit declaration of built-in function ‘[01m[Kfree[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-16.2.0/gcc/Warning-Options.html#index-Wbuiltin-declaration-mismatch-Wbuiltin-declaration-mismatch]8;;[m[K]
+[01m[Ksource/implem.c:70:5:[m[K [01;36m[Knote: [m[Kinclude ‘[01m[K<stdlib.h>[m[K’ or provide a declaration of ‘[01m[Kfree[m[K’
+make: *** [Makefile:40: objects/implem.o] Error 1
+[?2004hbash-5.3$ make
+[?2004lgcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/implem.c -o objects/implem.o
+gcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/main.c -o objects/main.o
+gcc -fopenmp -pthread -o mandelbrot objects/implem.o objects/main.o objects/mandel.o -lm
+[?2004hbash-5.3$ ./mandelbrot 4 4 20[K[K[K[K[K[K10 7 40 4
+[?2004l[?2004hbash-5.3$ .[Ktim[K[K[Kcat imes[K[K[K[Ktimes.txt
+[?2004lSerial: 0.000009s
+OpenMP: 0.000428s
+Pthreads1: 0.000243s
+[?2004hbash-5.3$ diff[K[K[K[Kmandl[K[K[K[K[Kdiff madn[K[Kndelbrot-[K_jems2_serial.g[Kpgm mandelbot[K[Krto[K[Kot_jems2_opens[Kmps[K.pgm
+[?2004l[?2004hbash-5.3$ diff mandelbrot_jems2_serial.pgm mandelbrot_jems2_openmp.pgm[K[K[K[K[K[K[K[K[K[Kse[K[Kpthreads1.pgm [K
+[?2004l2,7c2,7
+< 6 6 12 19 19 25 51 25 12 12
+< 6 19 19 25 31 89 255 102 44 19
+< 6 25 38 255 82 255 255 255 255 19
+< 6 25 38 255 82 255 255 255 255 19
+< 6 19 19 25 31 89 255 102 44 19
+< 6 6 12 19 19 25 51 25 12 12
+\ No newline at end of file
+---
+> 255 255 255 255 255 255 255 255 44 19
+> 6 6 6 12 12 12 12 12 12 12
+> 6 6 6 6 6 6 6 6 6 6
+> 6 6 6 6 6 6 6 6 6 6
+> 6 6 6 6 6 6 6 6 6 6
+> 6 6 6 6 6 6 6 6 6 6
+\ No newline at end of file
+[?2004hbash-5.3$ ![K[Kbash-5.3$ diff mandelbrot_jems2_serial.pgm mandelbrot_jems2_pthreads1.pgm[C[C[C[C[C[C[C[C[C[C[K./tests/t[K
+run_tests.sh  vetores/      
+bash-5.3$ ./tests/run_tests.sh [K
+[?2004l
+[1m0. Binário[0m
+  [32mok[0m    ./mandelbrot existe e é executável
+
+[1m1. Vetores do professor (tests/vetores/)[0m
+  [32mok[0m    teste1_serial.txt (4 4 50 1): mandelbrot_jems2_openmp.pgm
+  [32mok[0m    teste1_serial.txt (4 4 50 1): mandelbrot_jems2_pthreads1.pgm
+  [32mok[0m    teste1_serial.txt (4 4 50 1): mandelbrot_jems2_serial.pgm
+  [32mok[0m    teste2_openmp.txt (6 6 30 3): mandelbrot_jems2_openmp.pgm
+  [31mFALHA[0m teste2_openmp.txt (6 6 30 3): mandelbrot_jems2_pthreads1.pgm difere do esperado
+  [32mok[0m    teste2_openmp.txt (6 6 30 3): mandelbrot_jems2_serial.pgm
+  [32mok[0m    teste3_pthreads1.txt (10 6 40 4): mandelbrot_jems2_openmp.pgm
+  [31mFALHA[0m teste3_pthreads1.txt (10 6 40 4): mandelbrot_jems2_pthreads1.pgm difere do esperado
+  [32mok[0m    teste3_pthreads1.txt (10 6 40 4): mandelbrot_jems2_serial.pgm
+
+[1m2. Consistência entre implementações (oráculo = serial)[0m
+  [31mFALHA[0m '10 7 40 4': mandelbrot_jems2_pthreads1.pgm difere do serial
+  [31mFALHA[0m '4 4 50 16': mandelbrot_jems2_pthreads1.pgm difere do serial
+  [32mok[0m    '4 4 50 1': as 3 imagens são idênticas
+  [32mok[0m    '1000 1000 500 1': as 3 imagens são idênticas
+  [31mFALHA[0m '1000 1000 500 2': mandelbrot_jems2_pthreads1.pgm difere do serial
+  [31mFALHA[0m '1000 1000 500 4': mandelbrot_jems2_pthreads1.pgm difere do serial
+  [31mFALHA[0m '1000 1000 500 8': mandelbrot_jems2_pthreads1.pgm difere do serial
+
+[1m3. Tabela de erros (§10)[0m
+  [32mok[0m    #1  sem argumentos (exit=1, erro em stderr)
+  [32mok[0m    #2  poucos argumentos (exit=1, erro em stderr)
+  [32mok[0m    #3  argumentos demais (exit=1, erro em stderr)
+  [32mok[0m    #4  largura 0 (exit=1, erro em stderr)
+  [32mok[0m    #5  altura -1 (exit=1, erro em stderr)
+  [32mok[0m    #6  iteracoes 0 (exit=1, erro em stderr)
+  [32mok[0m    #7  threads 0 (exit=1, erro em stderr)
+  [32mok[0m    #8  nao numerico (exit=1, erro em stderr)
+  [32mok[0m    #9  fora de faixa (exit=1, erro em stderr)
+  [32mok[0m    #9b overflow de long (exit=1, erro em stderr)
+  [32mok[0m    #8b numero fracionario (exit=1, erro em stderr)
+
+[1m4. Falha de recurso (§10 #10)[0m
+  [32mok[0m    #10 diretório sem permissão de escrita (exit=1, erro em stderr)
+
+[1m5. Formato do times.txt[0m
+  [32mok[0m    times.txt no formato (3 linha(s))
+  [32mok[0m    duas execuções seguidas não acumulam linhas
+
+────────────────────────────────────────
+[31m7 de 31 FALHARAM[0m
+[?2004hbash-5.3$ make
+[?2004lmake: Nothing to be done for 'all'.
+[?2004hbash-5.3$ make./tests/run_tests.sh[C[C[C[C[C[C[C[C[C[Cdiff mandelbrot_jems2_serial.pgm mandelbrot_jems2_pthreads1.pgm[3Popenmp[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccat times.txt[K[C[C[C[C[C[C[C[C[C[C./mandelbrot 10 7 40 4
+[?2004l[?2004hbash-5.3$ ./mandelbrot 10 7 40 4[C[C[C[C[C[C[C[C[C[Cmake[K-./tests/run_tests.sh[C[C[C[C[C[C[C[C[C[Cdiff mandelbrot_jems2_serial.pgm mandelbrot_jems2_pthreads1.pgm[3Popenmp[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccat times.txt[K
+[?2004lSerial: 0.000008s
+OpenMP: 0.000353s
+Pthreads1: 0.000265s
+[?2004hbash-5.3$ cat times.txt[C[C[C[C[C[C[C[C[C[C./mandelbrot 10 7 40 4[C[C[C[C[C[C[C[C[C[Cmake-[K./tests/run_tests.sh[C[C[C[C[C[C[C[C[C[Cdiff mandelbrot_jems2_serial.pgm mandelbrot_jems2_pthreads1.pgm[3Popenmp[C[C[C[C
+[?2004l[?2004hbash-5.3$ diff mandelbrot_jems2_serial.pgm mandelbrot_jems2_openmp.pgm[C[C[C[C[C[C[C[C[C[Ccat times.txt[K[C[C[C[C[C[C[C[C[C[C./mandelbrot 10 7 40 4[C[C[C[C[C[C[C[C[C[Cmake-[K./tests/run_tests.sh[C[C[C[C[C[C[C[C[C[Cdiff mandelbrot_jems2_serial.pgm mandelbrot_jems2_pthreads1.pgm
+[?2004l[?2004hbash-5.3$ make[K[K[K[Kdiff mandelbrot_jems2_serial.pgm mandelbrot_jems2_pthreads1.pgm[3Popenmp[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccat times.txt[K[C[C[C[C[C[C[C[C[C[C./mandelbrot 10 7 40 4[C[C[C[C[C[C[C[C[C[Cmake-[K./tests/run_tests.sh
+[?2004l
+[1m0. Binário[0m
+  [32mok[0m    ./mandelbrot existe e é executável
+
+[1m1. Vetores do professor (tests/vetores/)[0m
+  [32mok[0m    teste1_serial.txt (4 4 50 1): mandelbrot_jems2_openmp.pgm
+  [32mok[0m    teste1_serial.txt (4 4 50 1): mandelbrot_jems2_pthreads1.pgm
+  [32mok[0m    teste1_serial.txt (4 4 50 1): mandelbrot_jems2_serial.pgm
+  [32mok[0m    teste2_openmp.txt (6 6 30 3): mandelbrot_jems2_openmp.pgm
+  [32mok[0m    teste2_openmp.txt (6 6 30 3): mandelbrot_jems2_pthreads1.pgm
+  [32mok[0m    teste2_openmp.txt (6 6 30 3): mandelbrot_jems2_serial.pgm
+  [32mok[0m    teste3_pthreads1.txt (10 6 40 4): mandelbrot_jems2_openmp.pgm
+  [32mok[0m    teste3_pthreads1.txt (10 6 40 4): mandelbrot_jems2_pthreads1.pgm
+  [32mok[0m    teste3_pthreads1.txt (10 6 40 4): mandelbrot_jems2_serial.pgm
+
+[1m2. Consistência entre implementações (oráculo = serial)[0m
+  [32mok[0m    '10 7 40 4': as 3 imagens são idênticas
+  [32mok[0m    '4 4 50 16': as 3 imagens são idênticas
+  [32mok[0m    '4 4 50 1': as 3 imagens são idênticas
+  [32mok[0m    '1000 1000 500 1': as 3 imagens são idênticas
+  [32mok[0m    '1000 1000 500 2': as 3 imagens são idênticas
+  [32mok[0m    '1000 1000 500 4': as 3 imagens são idênticas
+  [32mok[0m    '1000 1000 500 8': as 3 imagens são idênticas
+
+[1m3. Tabela de erros (§10)[0m
+  [32mok[0m    #1  sem argumentos (exit=1, erro em stderr)
+  [32mok[0m    #2  poucos argumentos (exit=1, erro em stderr)
+  [32mok[0m    #3  argumentos demais (exit=1, erro em stderr)
+  [32mok[0m    #4  largura 0 (exit=1, erro em stderr)
+  [32mok[0m    #5  altura -1 (exit=1, erro em stderr)
+  [32mok[0m    #6  iteracoes 0 (exit=1, erro em stderr)
+  [32mok[0m    #7  threads 0 (exit=1, erro em stderr)
+  [32mok[0m    #8  nao numerico (exit=1, erro em stderr)
+  [32mok[0m    #9  fora de faixa (exit=1, erro em stderr)
+  [32mok[0m    #9b overflow de long (exit=1, erro em stderr)
+  [32mok[0m    #8b numero fracionario (exit=1, erro em stderr)
+
+[1m4. Falha de recurso (§10 #10)[0m
+  [32mok[0m    #1
