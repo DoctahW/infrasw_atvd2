@@ -381,4 +381,25 @@ Pthreads1: 0.000265s
   [32mok[0m    #8b numero fracionario (exit=1, erro em stderr)
 
 [1m4. Falha de recurso (§10 #10)[0m
-  [32mok[0m    #1
+  [32mok[0m    #1Script iniciado em 2026-09-02 18:14:11-03:00 [COMMAND="bash --norc --noprofile -i" TERM="xterm" TTY="/dev/pts/0" COLUMNS="177" LINES="80"]
+[?2004h$ make
+[?2004lmkdir -p objects
+gcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/implem.c -o objects/implem.o
+gcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/main.c -o objects/main.o
+gcc -std=c11 -Wall -Wextra -O2 -D_POSIX_C_SOURCE=200809L -fopenmp -pthread -MMD -MP -c source/mandel.c -o objects/mandel.o
+gcc -fopenmp -pthread -o mandelbrot objects/implem.o objects/main.o objects/mandel.o -lm
+[?2004h$ .;ma[K[K[K/mandelbrot 10 10 20 4
+[?2004l[?2004h$ diff mandelbrot_jems2_openmp.pgm mandelbrot_jems2_serial.pgm 
+[?2004l[?2004h$ diff mandelbrot_jems2_openmp.pgm mandelbrot_jems2_serial.pgm [K[K[K[K[K[K[K[K[K[K[Kpthreads1.pgm
+[?2004l[?2004h$ diff 
+.clangd                         .gitignore                      mandelbrot_jems2_openmp.pgm     mandelbrot_jems2_serial.pgm     source/
+evidencias.log                  Makefile                        mandelbrot_jems2_pthreads1.pgm  objects/                        times.txt
+.git/                           mandelbrot                      mandelbrot_jems2_pthreads2.pgm  README.md                       
+$ diff ma[K[K[K[K[K[K[Kdiff mandelbrot_jems2_openmp.pgm mandelbrot_jems2_pthreads1.pgm[1P[1@2
+[?2004l[?2004h$ diff mandelbrot_jems2_openmp.pgm mandelbrot_jems2_pthreads2.pgm1[C[C[C[C2[C[C[C[C1[C[C[C[C[2Pserial.pgm [C[C[38P./mandelbrot 10 10 20 4[C[Cmake[K[K[K[K[Kcat times.txt 
+[?2004lSerial: 0.000004s
+OpenMP: 0.000178s
+Pthreads1: 0.000102s
+Pthreads2: 0.000067s
+[?2004h$ 
+Script concluído em 2026-09-02 18:15:53-03:00 [COMMAND_EXIT_CODE="0"]

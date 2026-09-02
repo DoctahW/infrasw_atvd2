@@ -14,7 +14,7 @@ typedef struct {
     Mandel_F    funcao;
 } Implem;
 
-typedef struct { 
+typedef struct {
     const char *rotulo;
     double s;
 } Medida;
@@ -34,7 +34,7 @@ int checa_converte(char argv[]){
         fprintf(stderr, "Erro: '%s' nao e um numero valido.\n", argv);
         return -1;
     }
-    
+
     if (*fim != '\0') {
         fprintf(stderr, "Erro: '%s' nao e um numero valido.\n", argv);
         return -1;
@@ -93,7 +93,7 @@ int main(int argc, char *argv[]) {
         if (args[i] < 0)
             return 1;
     }
-    
+
     int largura = args[0];
     int altura = args[1];
     int iteracoes = args[2];
@@ -103,7 +103,7 @@ int main(int argc, char *argv[]) {
         { "Serial",  "serial",  mandel_serial  },
         { "OpenMP",  "openmp",  mandel_openmp  },
         { "Pthreads1", "pthreads1", mandel_pthreads1 },
-        // { "Pthread2", "pthread2", mandel_pthread2 },
+        { "Pthreads2", "pthreads2", mandel_pthreads2 },
     };
     enum { N_IMPLEMS = (int)(sizeof implementacoes / sizeof implementacoes[0]) };
 
